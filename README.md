@@ -5,6 +5,7 @@ This bot will query stores to check and see if the PS5 is in stock and will send
 At this time it checks the following stores:
 
 - Target
+- Best Buy
 
 ## Setup
 
