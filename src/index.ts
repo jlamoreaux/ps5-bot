@@ -1,30 +1,10 @@
 import 'dotenv/config';
 import { sendTextAlert } from './alert';
 import { store } from './types';
-import { STORES } from './stores/stores';
-import { checkIfInStock as targetCheckIfInStock } from './stores/target';
+import target from './stores/target';
+import bestbuy from './stores/bestbuy';
 
-const storesToQuery: Array<store> = [
-  {
-    name: STORES.TARGET,
-    nameStandardized: 'Target',
-    itemsToCheck: [
-      {
-        name: 'PS5 - Digital',
-        url: 'https://www.target.com/p/playstation-5-digital-edition-console/-/A-81114596',
-        isInStock: false,
-        lastNotification: Date.now(),
-      },
-      {
-        name: 'PS5 - Disc Version',
-        url: 'https://www.target.com/p/playstation-5-console/-/A-81114595',
-        isInStock: false,
-        lastNotification: Date.now(),
-      },
-    ],
-    checkIfInStock: targetCheckIfInStock,
-  },
-];
+const storesToQuery: Array<store> = [target, bestbuy];
 
 export const app = () => {
   console.log('App has started...');
@@ -47,7 +27,7 @@ export const checkItemsInStore = (store: store) => {
     }
     item.isInStock = currentItemStatus;
     if (item.isInStock) {
-      sendTextAlert(item);
+      sendTextAlert(item, store.nameStandardized);
     }
   });
 };
