@@ -6,6 +6,7 @@ import axios, { AxiosError, AxiosResponse } from 'axios';
  * @returns status code of page
  */
 const fetchPage = async (url: string) => {
+  console.log(`fetching ${url}`);
   const response: AxiosResponse = await axios
     .get(url)
     .then((response: AxiosResponse) => {
