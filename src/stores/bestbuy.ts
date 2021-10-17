@@ -18,11 +18,15 @@ const checkIfInStock = async (item: item) => {
     const addToCartIsEnabled = !$(
       '.add-to-cart-button'
     )[0].attribs?.class.includes('disabled');
-    return addToCartIsEnabled;
+    if (addToCartIsEnabled) {
+      return addToCartIsEnabled;
+    } else {
+      console.log('could not find button on page');
+    }
   } catch (error) {
     console.log(error);
-    return false;
   }
+  return false;
 };
 
 const bestbuy: store = {
