@@ -12,12 +12,17 @@ import { STORES } from './stores';
  */
 const checkIfInStock = async (item: item) => {
   console.log('Checking if item is in stock at Best Buy');
-  const response: AxiosResponse = await fetchPage(item.url);
-  const $ = cheerio.load(response.data.toString());
-  const addToCartIsEnabled = !$(
-    '.add-to-cart-button'
-  )[0].attribs?.class.includes('disabled');
-  return addToCartIsEnabled;
+  try {
+    const response: AxiosResponse = await fetchPage(item.url);
+    const $ = cheerio.load(response.data.toString());
+    const addToCartIsEnabled = !$(
+      '.add-to-cart-button'
+    )[0].attribs?.class.includes('disabled');
+    return addToCartIsEnabled;
+  } catch (error) {
+    console.log(error);
+    return false;
+  }
 };
 
 const bestbuy: store = {
