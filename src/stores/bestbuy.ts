@@ -11,17 +11,16 @@ import { STORES } from './stores';
  *
  */
 const checkIfInStock = async (item: item) => {
-  console.log('Checking if item is in stock at Best Buy');
   try {
     const response: AxiosResponse = await fetchPage(item.url);
     const $ = cheerio.load(response.data.toString());
-    const addToCartIsEnabled = !$(
-      '.add-to-cart-button'
-    )[0].attribs?.class.includes('disabled');
-    if (addToCartIsEnabled) {
+    if ($('.add-to-cart-button')) {
+      const addToCartIsEnabled = !$(
+        '.add-to-cart-button'
+      )[0].attribs?.class.includes('disabled');
       return addToCartIsEnabled;
     } else {
-      console.log('could not find button on page');
+      console.log('Could not find ad to cart button');
     }
   } catch (error) {
     console.log(error);
