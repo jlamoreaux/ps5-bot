@@ -16,6 +16,7 @@ type item = {
 };
 
 const app = () => {
+  console.log('App has started...');
   const itemsToQuery: Array<item> = [
     {
       name: 'PS5 - Digital',
