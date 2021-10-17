@@ -33,8 +33,7 @@ const app = () => {
 
   setInterval(
     () => itemsToQuery.forEach((item) => checkIfInStock(item)),
-    // 300000
-    1000
+    300000
   );
 };
 
@@ -46,7 +45,10 @@ const checkIfInStock = async (item: item) => {
     }
     soundTheAlarm(item);
     item.isInStock = true;
+    return;
   }
+  item.isInStock = false;
+  return;
 };
 
 const soundTheAlarm = async (item: item) => {
