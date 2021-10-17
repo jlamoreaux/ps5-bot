@@ -10,10 +10,10 @@ const client = new Twilio(accountSid, authToken);
  * Sends SMS message to alert that the item is in stock
  * @param item the item that is triggering the notification
  */
-export const sendTextAlert = async (item: item) => {
+export const sendTextAlert = async (item: item, store: string) => {
   await client.messages
     .create({
-      body: `${item.name.toUpperCase()} IS IN STOCK!!!\nFind it here: ${
+      body: `${item.name.toUpperCase()} IS IN STOCK AT ${store.toUpperCase()}!!!\nFind it here: ${
         item.url
       }`,
       to: process.env.PHONE_NUMBER,

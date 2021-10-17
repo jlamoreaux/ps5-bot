@@ -1,5 +1,6 @@
 import fetchPage from '../fetchPage';
-import { item } from '../types';
+import { item, store } from '../types';
+import { STORES } from './stores';
 
 /**
  * Checks to see if this item is in stock
@@ -7,7 +8,29 @@ import { item } from '../types';
  * @returns true if item is in stock
  *
  */
-export const checkIfInStock = async (item: item) => {
+const checkIfInStock = async (item: item) => {
   const status: Number = await (await fetchPage(item.url)).status;
   return status === 200;
 };
+
+const target: store = {
+  name: STORES.TARGET,
+  nameStandardized: 'Target',
+  itemsToCheck: [
+    {
+      name: 'PS5 - Digital',
+      url: 'https://www.target.com/p/playstation-5-digital-edition-console/-/A-81114596',
+      isInStock: false,
+      lastNotification: Date.now(),
+    },
+    {
+      name: 'PS5 - Disc Version',
+      url: 'https://www.target.com/p/playstation-5-console/-/A-81114595',
+      isInStock: false,
+      lastNotification: Date.now(),
+    },
+  ],
+  checkIfInStock,
+};
+
+export default target;

@@ -6,7 +6,7 @@ import axios, { AxiosError, AxiosResponse } from 'axios';
  * @returns status code of page
  */
 const fetchPage = async (url: string) => {
-  const response = await axios
+  const response: AxiosResponse = await axios
     .get(url)
     .then((response: AxiosResponse) => {
       console.log({
@@ -25,7 +25,7 @@ const fetchPage = async (url: string) => {
         text: response.statusText,
         url: response.config?.url,
       });
-      return response;
+      return err.response;
     });
   return response;
 };
