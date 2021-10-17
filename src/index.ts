@@ -5,6 +5,7 @@ import target from './stores/target';
 import bestbuy from './stores/bestbuy';
 
 const storesToQuery: Array<store> = [target, bestbuy];
+const interval = Number(process.env.INTERVAL);
 
 export const app = () => {
   console.log('App has started...');
@@ -15,7 +16,7 @@ export const app = () => {
       storesToQuery.forEach((store) => {
         checkItemsInStore(store);
       }),
-    300000
+    interval
   );
 };
 
