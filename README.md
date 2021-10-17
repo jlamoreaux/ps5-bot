@@ -1,6 +1,6 @@
 # PS5 In Stock Bot
 
-This bot will query stores to check and see if the PS5 is in stock and will send an SMS alert if it is.
+This bot will query stores every 5 minutes to check and see if the PS5 is in stock and will send an SMS alert if it is.
 
 At this time it checks the following stores:
 
