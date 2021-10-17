@@ -19,8 +19,7 @@ const app = () => {
   const itemsToQuery: Array<item> = [
     {
       name: 'PS5 - Digital',
-      // url: 'https://www.target.com/p/playstation-5-digital-edition-console/-/A-81114596',
-      url: 'https://jlamoreaux.com',
+      url: 'https://www.target.com/p/playstation-5-digital-edition-console/-/A-81114596',
       isInStock: false,
       lastNotification: Date.now(),
     },
