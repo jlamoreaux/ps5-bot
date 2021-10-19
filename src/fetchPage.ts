@@ -7,7 +7,7 @@ import axios, { AxiosError, AxiosResponse } from 'axios';
  */
 const fetchPage = async (url: string) => {
   const response: AxiosResponse = await axios
-    .get(url)
+    .get(url, { timeout: 1000 })
     .then((response: AxiosResponse) => {
       console.log({
         date: Date().toString(),
@@ -21,9 +21,9 @@ const fetchPage = async (url: string) => {
       const response = err.response;
       console.log({
         date: Date().toString(),
-        status: response.status,
-        text: response.statusText,
-        url: response.config?.url,
+        status: response?.status || 'none',
+        url: response?.config?.url,
+        code: err.code || 'none',
       });
       return err.response;
     });
