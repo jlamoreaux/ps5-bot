@@ -11,6 +11,7 @@ const fetchPage = async (url: string) => {
     .then((response: AxiosResponse) => {
       console.log({
         date: Date().toString(),
+        message: 'Query ran successfully',
         status: response.status,
         text: response.statusText,
         url: response.config?.url,
@@ -21,6 +22,7 @@ const fetchPage = async (url: string) => {
       const response = err.response;
       console.log({
         date: Date().toString(),
+        message: 'Error while running query',
         status: response?.status || 'none',
         url: response?.config?.url,
         code: err.code || 'none',
