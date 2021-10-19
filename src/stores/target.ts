@@ -9,8 +9,13 @@ import { STORES } from './stores';
  *
  */
 const checkIfInStock = async (item: item) => {
-  const status: Number = await (await fetchPage(item.url)).status;
-  return status === 200;
+  const page = await fetchPage(item.url);
+  if (page) {
+    const status = page.status;
+    return status === 200;
+  }
+  return false;
+  // const status: Number = await (await fetchPage(item.url)).status;
 };
 
 const target: store = {
